@@ -1,0 +1,27 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    image: "frontend"
+    environment:
+        - NODE_ENV=production
+    env_file: .env
+    networks:
+      - rev-proxy
+  backend:
+    build: ./api
+    image: "backend"
+    environment:
+        - NODE_ENV=production
+    env_file: .env
+    networks:
+      - rev-proxy
+  revproxy:
+    build: ./revproxy
+    image: "revproxy"
+    networks:
+      - rev-proxy
+    ports:
+      - "80:80"
+networks:
+    rev-proxy:

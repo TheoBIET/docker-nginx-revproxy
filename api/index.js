@@ -1,11 +1,13 @@
-const cors = require('cors');
-const express = require('express');
-//const {port} = require('./config.js');
-const port = 5005;
+import express from "express";
+import cors from "cors";
+import {port} from "./config.js";
+
 const app = express();
 
+console.log(port);
+
 if (process.env["NODE_ENV"] === "development") {
-  console.log("dev mode!");
+  console.log("API switch to developpement mode");
   app.use(cors());
 }
 
@@ -18,4 +20,4 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(port, () => console.log(`listening on port ${port}!`));
+app.listen(port, () => console.log(`API Listening at http://localhost:${port}`));

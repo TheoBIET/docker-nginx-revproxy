@@ -10,7 +10,10 @@ class App extends React.Component {
 
     componentDidMount() {
         this.callApi()
-            .then((res) => this.setState({ message: res.message }))
+            .then((res) => {
+              console.log(res);
+              this.setState({ message: res.data.message })
+            })
             .catch((err) => {
                 console.log(err);
                 this.setState({ message: err });

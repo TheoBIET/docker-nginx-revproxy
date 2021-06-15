@@ -1,19 +1,17 @@
 import React from 'react'
 import App from './App/App'
-import useAxios from 'axios-hooks'
+import axios from 'axios'
 const {api_base} = require('../../config');
 
-const AppContainer = () => {
-  const [{ data, loading, error }] = useAxios(api_base)
+const AppContainer = async () => {
+  const response = await axios.get(api_base);
 
-  if (loading) return <p>Loading...</p>
-  if (error) {
-    console.log(error);
-    return <p>Error!</p>
-  } 
+  console.log(response);
+  console.log(response.data);
+  console.log(response.data.message);
 
   const appProps = {
-    message: data.data.message
+    message: message
   }
 
   return <App {...appProps} />

@@ -7,7 +7,10 @@ const AppContainer = () => {
   const [{ data, loading, error }] = useAxios(api_base)
 
   if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
+  if (error) {
+    console.log(error);
+    return <p>Error!</p>
+  } 
 
   const appProps = {
     message: data.data.message

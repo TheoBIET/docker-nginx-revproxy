@@ -1,19 +1,28 @@
 import React from "react";
-import axios from "axios";
-import { render } from "sass";
 
-const App = () => {
-    let message = "";
-    axios
-        .get("http://theobiet.fr/api")
-        .then(function (response) {
-            console.log(response);
-            return render(<div className="m-2">{response.data.message}</div>);
-        })
-        .catch(function (error) {
-            console.log(error);
-            return render(<div className="m-2">{message}</div>);
-        });
-};
+class App {
+    state = {
+        message: "Loading...",
+    };
+
+    componentDidMount() {
+        this.callApi()
+            .then((res) => this.setState({ message: res.message }))
+            .catch((err) => {
+                console.log(err);
+                this.setState({ message: err });
+            });
+    }
+    callApi = async () => {
+        const response = await fetch("/api");
+        const body = await response.json();
+        if (response.status !== 200) throw Error(body.message);
+        return body;
+    };
+
+    render() {
+        return <h2>{this.state.message}</h2>
+    }
+}
 
 export default App;

@@ -1,7 +1,7 @@
 import React from 'react'
 import App from './App/App'
 import useAxios from 'axios-hooks'
-import { api_base } from '../../config'
+const {api_base} = require('../../config');
 
 const AppContainer = () => {
   const [{ data, loading, error }] = useAxios(api_base)
@@ -16,4 +16,4 @@ const AppContainer = () => {
   return <App {...appProps} />
 }
 
-export default AppContainer
+export default AppContainer;

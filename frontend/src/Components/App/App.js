@@ -1,9 +1,12 @@
 import React from "react";
 
 class App {
-    state = {
+    constructor(props) {
+      super(props);
+      this.state = {
         message: "Loading...",
-    };
+      };
+  }
 
     componentDidMount() {
         this.callApi()

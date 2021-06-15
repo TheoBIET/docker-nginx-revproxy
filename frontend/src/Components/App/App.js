@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const App = ({ message }) => {
+const App = () => {
   const message = "HELLO"
   axios.get('/api')
     .then(function (response) {

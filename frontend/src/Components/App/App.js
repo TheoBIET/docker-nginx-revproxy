@@ -1,12 +1,12 @@
 import React from "react";
 
-class App {
+class App extends React.Component {
     constructor(props) {
-      super(props);
-      this.state = {
-        message: "Loading...",
-      };
-  }
+        super(props);
+        this.state = {
+            message: "Loading...",
+        };
+    }
 
     componentDidMount() {
         this.callApi()
@@ -16,6 +16,7 @@ class App {
                 this.setState({ message: err });
             });
     }
+
     callApi = async () => {
         const response = await fetch("/api");
         const body = await response.json();
@@ -24,7 +25,7 @@ class App {
     };
 
     render() {
-        return <h2>{this.state.message}</h2>
+        return <h2>{this.state.message}</h2>;
     }
 }
 

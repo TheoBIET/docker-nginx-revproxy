@@ -4,12 +4,16 @@ import {port} from "./config.js";
 
 const app = express();
 
-console.log(port);
+const corsOptions = {
+  origin: "*",
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 if (process.env["NODE_ENV"] === "development") {
   console.log("API switch to developpement mode");
-  app.use(cors());
-}
+};
 
 app.get("/", (req, res) => {
   return res.json({

@@ -1,7 +1,17 @@
-import React, { memo } from 'react'
+import React from 'react';
+import axios from 'axios';
 
 const App = ({ message }) => {
+  const message = "HELLO"
+  axios.get('/api')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+
   return <div className='m-2'>{message}</div>
 }
 
-export default memo(App)
+export default App;
